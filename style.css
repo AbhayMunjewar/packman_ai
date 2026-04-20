@@ -1,0 +1,153 @@
+/* ========================================
+   PAC-MAN — Premium Arcade Styling
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a1a;
+    background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(25, 25, 80, 0.5) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(20, 10, 50, 0.4) 0%, transparent 50%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', monospace;
+    overflow: hidden;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#game-title {
+    font-size: 2.2rem;
+    color: #ffe135;
+    text-shadow:
+        0 0 10px rgba(255, 225, 53, 0.8),
+        0 0 30px rgba(255, 225, 53, 0.4),
+        0 0 60px rgba(255, 225, 53, 0.2);
+    letter-spacing: 6px;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 0 0 10px rgba(255,225,53,0.8), 0 0 30px rgba(255,225,53,0.4); }
+    to   { text-shadow: 0 0 20px rgba(255,225,53,1.0), 0 0 50px rgba(255,225,53,0.6), 0 0 80px rgba(255,225,53,0.3); }
+}
+
+/* --- HUD --- */
+#hud {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 588px;
+    padding: 0 4px;
+}
+
+#hud > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.hud-label {
+    font-size: 0.55rem;
+    color: #8888cc;
+    letter-spacing: 2px;
+}
+
+#score-value {
+    font-size: 1rem;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+#lives-value {
+    font-size: 1rem;
+    letter-spacing: 4px;
+}
+
+#level-value {
+    font-size: 1rem;
+    color: #66ffcc;
+    text-shadow: 0 0 8px rgba(102,255,204,0.5);
+}
+
+/* --- Canvas Area --- */
+#canvas-wrapper {
+    position: relative;
+    border: 2px solid #2a2a5e;
+    border-radius: 8px;
+    box-shadow:
+        0 0 15px rgba(50, 50, 150, 0.3),
+        inset 0 0 30px rgba(0, 0, 30, 0.5);
+    overflow: hidden;
+}
+
+#game-canvas {
+    display: block;
+    background: #000010;
+}
+
+/* --- Overlay --- */
+#overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 15, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(3px);
+}
+
+#overlay.hidden {
+    display: none;
+}
+
+#overlay-content {
+    text-align: center;
+    animation: overlayPulse 1.5s ease-in-out infinite alternate;
+}
+
+#overlay-title {
+    font-size: 1.6rem;
+    color: #ffe135;
+    text-shadow: 0 0 20px rgba(255,225,53,0.7);
+    margin-bottom: 16px;
+}
+
+#overlay-message {
+    font-size: 0.6rem;
+    color: #aaaaee;
+    letter-spacing: 1px;
+}
+
+@keyframes overlayPulse {
+    from { transform: scale(1); }
+    to   { transform: scale(1.03); }
+}
+
+/* --- Controls Info --- */
+#controls-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#controls-info span {
+    font-size: 0.45rem;
+    color: #555588;
+    letter-spacing: 1px;
+}
